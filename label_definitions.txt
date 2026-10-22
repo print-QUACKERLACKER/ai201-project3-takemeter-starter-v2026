@@ -5,6 +5,6 @@
 #
 # Delete the examples below and put yours in.
 
-analysis: makes an argument backed by a specific, checkable fact
-hot_take: a confident claim with no support offered
-reaction: an immediate response to something that just happened
+analysis: makes a claim or gives running advice using specific, checkable details such as pace, distance, race conditions, or training data to support the point
+hot_take: makes a confident general claim about running or race etiquette without offering specific evidence to support it
+reaction: describes a personal experience or feeling about a specific run, race, or running-related event, rather than arguing a general point

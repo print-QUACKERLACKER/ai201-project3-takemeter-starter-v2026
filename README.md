@@ -42,7 +42,7 @@
 <!-- Your community, and what your classifier sorts posts into. Three or four
      sentences. -->
 
-
+I chose the running subreddit, I originally chose the pokemon card value subreddit, but I did not see any hot takes. The categories are analysis, hot_take and reaction. The classifier should sort into these three.
 
 ---
 
@@ -54,25 +54,41 @@
      The decision rule is worth a point on its own and it's the thing most
      people leave out. Every taxonomy has a hardest boundary. Name yours. -->
 
-### `label_one`
+     analysis: I've run New York twice.Yes, it's crowded and chaotic and intense.
 
-**Definition:**
+     hot_take: Nothing worse than someone who runs right behind you. Especially when the have weird breathing.
 
-**Example 1:**
->
+     reaction: Is it worth doing a Major Marathon? It's a vibe
 
-**Example 2:**
->
+### `analysis`
 
-### `label_two`
-
-**Definition:**
+**Definition:** Makes a claim or gives running advice using specific, checkable details such as pace, distance, race conditions, or training data to support the point.
 
 **Example 1:**
->
+> "That race had 14,000 finishers. I don't know how anyone would expect to not have someone near them on a race like that."
 
 **Example 2:**
->
+> "If you were actually 4-5 yards back, that's not even really tucked in."
+
+### `hot_take`
+
+**Definition:** Makes a confident general claim about running or race etiquette without offering specific evidence to support it.
+
+**Example 1:**
+> "Imagine signing up for a big race and getting mad that someone is going the same way as you."
+
+**Example 2:**
+> "Following someone you don't know for miles on a training run is creepy. Doing it in a huge race is perfectly normal."
+
+### `reaction`
+
+**Definition:** Describes a personal experience or feeling about a specific run, race, or running-related event, rather than arguing a general point.
+
+**Example 1:**
+> "I ran the Long Beach Half Marathon yesterday. It was my third road race ever."
+
+**Example 2:**
+> "This happened to me in my first 10k but I was the one that said thanks."
 
 ### The hardest boundary
 
@@ -91,19 +107,20 @@
 <!-- Where you collected from, how you labelled, your counts, and three hard
      cases. -->
 
-**Where the posts came from:**
+**Where the posts came from:** Reddit search results for `r/running`, pasted on
+October 21, 2026. The dataset contains comment excerpts, each paired with its
+thread title; some excerpts may be incomplete.
 
-**How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
-Say so plainly — the disclosure is required, not penalised. -->
+**How I labelled them:** AI suggested preliminary labels for all 220 comments. I then checked over to fix the AI suggested labels.
 
 **Counts per label:**
 
 | Label | Count | Share |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+| `analysis` | 39 | 18% |
+| `hot_take` | 114 | 52% |
+| `reaction` | 67 | 30% |
+| **Total** | **220** | **100%** |
 
 **Three hard cases**
 
@@ -111,25 +128,25 @@ Say so plainly — the disclosure is required, not penalised. -->
      been, and what you chose. These are worth more than the easy 190. -->
 
 **1.**
-> *The post:*
+> *The post:* You did nothing wrong, but also, I personally do not like someone right behind me that I cannot see (assuming the crowd has dissapated and there is plenty of open running space to spread out).
 >
-> *Could have been:*
+> *Could have been:* hot take
 >
-> *I chose, because:*
+> *I chose, because:* reaction, it's a personal experience and feeling
 
 **2.**
-> *The post:*
+> *The post:* I’m not an expert, but the prices of everything the race directors need to pay for (toilets, medical, food, permits) has gone up, which is part of the increased prices.
 >
-> *Could have been:*
+> *Could have been:* reaction
 >
-> *I chose, because:*
+> *I chose, because:* analysis of the connection to economic events
 
 **3.**
-> *The post:*
+> *The post:* Yes. You're not close to pushing the limits for your age group. Your volume is quite low. I see no evidence of speed work or interval training.
 >
-> *Could have been:*
+> *Could have been:* analysis
 >
-> *I chose, because:*
+> *I chose, because:* reaction because the user is making guesses based off what the poster said
 
 ---
 
@@ -162,17 +179,19 @@ of next unit's variance. -->
 
 **Moment 1**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* Help choosing a subreddit and adapting the labels for a running dataset.
+- *What came back:* Suggestions for running-focused definitions of `analysis`, `hot_take`, and `reaction`.
+- *What I changed:* I switched the project community from Pokémon card valuation to running.
 
 **Moment 2**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* Filter a pasted `r/running` search feed, ignore ads and AutoModerator, include comments even when snippets were incomplete, and help draft numeric acceptance criteria.
+- *What came back:* 220 comment snippets paired with thread titles and preliminary label suggestions, plus draft numeric targets and data-based reasons for `criteria.md`.
+- *What I changed:* I used the snippets as candidate rows in `labels.csv`. AI drafted the five criteria in `criteria.md`, and I reviewed and confirmed the targets and reasons. I still need to review the dataset labels and verify whether comments are acceptable data for this assignment.
 
-**Pre-labelling disclosure:**
+**Pre-labelling disclosure:** AI extracted and suggested labels for all 220
+comment excerpts. The labels are unreviewed; none are marked as independently
+labelled (`cold`). Some source snippets may be incomplete.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
@@ -190,8 +209,9 @@ of next unit's variance. -->
 |---|---|---|---|
 | Overall accuracy |  |  |  |
 | Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
+| F1 — `analysis` |  |  |  |
+| F1 — `hot_take` |  |  |  |
+| F1 — `reaction` |  |  |  |
 
 **What I predicted before I looked:**
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A

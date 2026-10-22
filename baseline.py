@@ -60,9 +60,9 @@ def load_definitions(path):
 
     Format is one label per line:
 
-        analysis: makes an argument backed by a specific checkable fact
-        hot_take: a confident claim with no support offered
-        reaction: an immediate response to something that just happened
+        analysis: uses specific, checkable running details to support a point
+        hot_take: makes a confident general running claim without specific evidence
+        reaction: describes a personal experience or feeling about a running event
 
     Copy these from your README so the baseline is judged on exactly the
     definitions you wrote. If the file doesn't exist, the label names are used

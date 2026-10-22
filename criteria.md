@@ -53,11 +53,14 @@ whether you hit them:
 
 ## 1.
 
-<!-- Your criterion. It must name a number. -->
+The model's held-out accuracy is at least **0.65 in each of the three seeds**.
 
 
 
-**Why this target:**
+**Why this target:** With three labels, a roughly even random guess is near
+0.33 accuracy. I want the model to be right often enough to be useful, while
+recognizing that these short and sometimes incomplete comment excerpts can be
+ambiguous.
 
 
 
@@ -65,11 +68,13 @@ whether you hit them:
 
 ## 2.
 
-<!-- Your criterion. -->
+The model's held-out macro F1 is at least **0.60 in each of the three seeds**.
 
 
 
-**Why this target:**
+**Why this target:** Macro F1 gives `analysis`, `hot_take`, and `reaction`
+equal weight. That matters because `hot_take` is the largest class in my
+current labels, and accuracy alone could hide weak performance on `analysis`.
 
 
 
@@ -77,11 +82,16 @@ whether you hit them:
 
 ## 3.
 
-<!-- Your criterion. -->
+The held-out F1 for each of `analysis`, `hot_take`, and `reaction` is at least
+**0.45 in each of the three seeds**.
 
 
 
-**Why this target:**
+**Why this target:** The labels describe overlapping kinds of running
+discussion: a personal reaction can also include evidence, and a confident
+opinion can mention a detail without relying on it. I want every class to do
+better than a barely useful result, while allowing for the ambiguity of the
+boundaries and the smaller `analysis` group.
 
 
 
@@ -89,11 +99,13 @@ whether you hit them:
 
 ## 4.
 
-<!-- Your criterion. -->
+No label makes up more than **70%** of the labelled dataset.
 
 
 
-**Why this target:**
+**Why this target:** `hot_take` is the largest group in my current file at
+about 52%. Keeping any one class below 70% makes it less likely that the
+classifier can appear successful by mostly predicting the majority label.
 
 
 
@@ -101,11 +113,15 @@ whether you hit them:
 
 ## 5.
 
-<!-- Your criterion. -->
+The range between the highest and lowest held-out accuracy across the three
+seeds is no more than **0.10**.
 
 
 
-**Why this target:**
+**Why this target:** The smallest class has only 39 examples, so its test
+examples—and the overall score—can shift noticeably between splits or runs.
+I want the model's result to be reasonably consistent, not just good on one
+seed.
 
 
 
